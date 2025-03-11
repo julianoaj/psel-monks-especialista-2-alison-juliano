@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\ViewLoader;
+
 class HomeController
 {
+    /**
+     * @throws \Exception
+     */
     public function index()
     {
-        echo "Hello, World! Index!";
+        return ViewLoader::render('home');
     }
 }
