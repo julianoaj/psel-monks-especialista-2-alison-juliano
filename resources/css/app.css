@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@layer components {
+    .text-primary {
+        color: #EAE8E4 !important;
+    }
+}

@@ -1,27 +1,17 @@
 {
   "name": "psel-monks-especialista-2-alison-juliano",
-  "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/julianoaj/psel-monks-especialista-2-alison-juliano.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/julianoaj/psel-monks-especialista-2-alison-juliano/issues"
-  },
-  "homepage": "https://github.com/julianoaj/psel-monks-especialista-2-alison-juliano#readme",
-  "description": "",
   "dependencies": {
+    "@tailwindcss/vite": "^4.0.13",
+    "tailwindcss": "^4.0.13",
     "vue": "^3.5.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
+    "daisyui": "^5.0.3",
     "vite": "^6.2.1"
   }
 }
