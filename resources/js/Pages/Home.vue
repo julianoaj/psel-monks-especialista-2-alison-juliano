@@ -8,6 +8,19 @@ import ProductsCategory from "../components/home/ProductsCategory.vue";
 import Cards from "../components/home/Cards.vue";
 import FormBox from "../components/home/FormBox.vue";
 import Footer from "../components/home/Footer.vue";
+import {onMounted} from "vue";
+import axios from "axios";
+
+onMounted(() => {
+  axios.get('http://localhost/api/categories')
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+})
+
 </script>
 
 <template>

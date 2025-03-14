@@ -1,12 +1,13 @@
 FROM php:8.4-fpm
 
 RUN apt-get update && apt-get install -y \
-		libfreetype-dev \
-		libjpeg62-turbo-dev \
-		libpng-dev \
+  libfreetype-dev \
+  libjpeg62-turbo-dev \
+  libpng-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+    && docker-php-ext-install mysqli pdo pdo_mysql \
+    && docker-php-ext-enable pdo_mysql
 
 RUN pecl install redis \
 	&& pecl install xdebug \
@@ -25,3 +26,6 @@ RUN echo 'date.timezone="America/Sao_Paulo"' >> /usr/local/etc/php/conf.d/date.i
     && echo 'opcache.enable=1' >> /usr/local/etc/php/conf.d/opcache.conf \
     && echo 'opcache.validate_timestamps=1' >> /usr/local/etc/php/conf.d/opcache.conf \
     && echo 'opcache.fast_shutdown=1' >> /usr/local/etc/php/conf.d/opcache
+
+RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini \
+    && sed -i '/pdo_mysql/d' /usr/local/etc/php/php.ini

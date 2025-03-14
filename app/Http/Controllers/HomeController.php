@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Facades\ViewLoader;
+use App\Models\Category;
+use Exception;
 
 class HomeController
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
-    public function index()
+    public function index(): string
     {
         return ViewLoader::render('home');
     }
