@@ -1,8 +1,18 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@config "../../tailwind.config.js";
 
 @layer components {
     .text-primary {
         color: #EAE8E4 !important;
     }
+}
+
+@plugin "daisyui/theme" {
+    name: light;
+    default: true;
+    --color-primary: #3C0C60;
+    --color-secondary: #6615a2;
+    --color-accent: #2D2D2D;
+    --color-neutral: #DFBBFE;
 }
