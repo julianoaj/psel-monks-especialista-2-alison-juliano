@@ -1,13 +1,12 @@
-<script setup>
-import {ref} from "vue";
+<script setup lang="ts">
+import {Category} from "@/Types/category";
 
-const categories = ref([
-    'Perfumaria', 'Corpo e Banho', 'Hidratante',
-    'Desodorante', 'Cabelos', 'Maquiagem',
-    'Rosto', 'Casa', 'Infantil',
-    'Shampoo', 'Sabonete', 'Body splash',
-    'Óleo corporal', 'Corretivo', 'Proteção solar',
-])
+interface Props {
+  categories: Category[]
+}
+
+defineProps<Props>()
+
 </script>
 
 <template>
@@ -16,7 +15,7 @@ const categories = ref([
 
     <div class="flex flex-wrap gap-6 mt-10 items-center justify-center">
       <button v-for="category in categories" class="btn xl:btn-lg btn-outline btn-secondary rounded-4xl lx:px-10">
-        {{ category }}
+        {{ category.name }}
       </button>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import HeaderHome from "../components/home/header/HeaderHome.vue";
 import HeaderPresentation from "../components/home/HeaderPresentation.vue";
 import Products from "../components/home/Products.vue";
@@ -8,18 +8,30 @@ import ProductsCategory from "../components/home/ProductsCategory.vue";
 import Cards from "../components/home/Cards.vue";
 import FormBox from "../components/home/FormBox.vue";
 import Footer from "../components/home/Footer.vue";
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 import axios from "axios";
+import {Category} from "@/Types/category";
 
 onMounted(() => {
   axios.get('http://localhost/api/categories')
     .then(response => {
-      console.log(response)
+      categories.value.push(...response.data)
     })
     .catch(error => {
       console.log(error)
     })
 })
+
+const categories = ref<Category[]>([])
+
+const pushCategory = (e: string[]) => {
+  e.forEach(arg => {
+    categories.value.push({
+      id: categories.value.length + 1,
+      name: arg
+    })
+  })
+}
 
 </script>
 
@@ -38,12 +50,12 @@ onMounted(() => {
 
       <Apps class="lg:mt-20 mt-10 mr-4"/>
 
-      <ProductsCategory class="lg:mt-16 mt-10"/>
+      <ProductsCategory class="lg:mt-16 mt-10" :categories="categories"/>
 
       <Cards class="lg:mt-16 mt-10"/>
     </div>
 
-    <FormBox class="lg:mt-16 mt-10"/>
+    <FormBox @saved-categories="(e) => pushCategory(e)" class="lg:mt-16 mt-10"/>
 
     <Footer/>
 

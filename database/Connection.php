@@ -1,5 +1,5 @@
 <?php
-namespace Illuminate;
+namespace Eloquent;
 
 use PDO;
 use PDOException;
@@ -34,16 +34,14 @@ class Connection {
         }
     }
 
-    public static function getInstance(): ?Connection
-    {
+    public static function getInstance(): Connection {
         if (self::$instance === null) {
             self::$instance = new self();
         }
         return self::$instance;
     }
 
-    public function getConnection(): PDO
-    {
+    public function getConnection(): PDO {
         return $this->connection;
     }
 }

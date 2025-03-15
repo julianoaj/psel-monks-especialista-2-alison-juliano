@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import {ref} from "vue";
 
@@ -28,7 +28,7 @@ const cards = ref([
 </script>
 
 <template>
-  <div class="text-center lg:text-left">
+  <div v-bind="$attrs" class="text-center lg:text-left">
     <h2 class="lg:text-4xl text-xl mb-2 text-black">Lorem ipsum dolor sit amet, consectetur.</h2>
     <p class="lg:text-2xl font-thin text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi architecto deleniti distinctio.</p>
   </div>

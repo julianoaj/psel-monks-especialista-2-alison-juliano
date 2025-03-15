@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-use Illuminate\Connection;
+use Eloquent\Connection;
 use PDO;
 
 class Category
@@ -18,7 +18,6 @@ class Category
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    // Retrieve a single category by id
     public function getById(int $id): ?array
     {
         $stmt = $this->db->prepare("SELECT * FROM categories WHERE id = ?");
@@ -30,7 +29,7 @@ class Category
     // Create a new category
     public function create(array $data): bool
     {
-        $stmt = $this->db->prepare("INSERT INTO categories (name, description) VALUES (?, ?)");
-        return $stmt->execute([$data['name'], $data['description']]);
+        $stmt = $this->db->prepare("INSERT INTO categories (name) VALUES (?)");
+        return $stmt->execute([$data['name']]);
     }
 }

@@ -19,7 +19,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Illuminate\\": "database/"
+            "Eloquent\\": "database/",
+            "Illuminate\\": "src/"
         }
     },
     "minimum-stability": "stable",
