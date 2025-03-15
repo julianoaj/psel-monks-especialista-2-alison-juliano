@@ -29,3 +29,8 @@ RUN echo 'date.timezone="America/Sao_Paulo"' >> /usr/local/etc/php/conf.d/date.i
 
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini \
     && sed -i '/pdo_mysql/d' /usr/local/etc/php/php.ini
+
+WORKDIR /var/www/projects
+COPY composer.json composer.lock ./
+RUN composer update --no-dev --optimize-autoloader
+COPY . .
