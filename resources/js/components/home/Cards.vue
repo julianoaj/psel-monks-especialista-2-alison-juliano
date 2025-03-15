@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="grid xl:grid-cols-3 lg:grid-cols-2 lg:pl-12 gap-4">
+  <div class="grid xl:grid-cols-3 lg:grid-cols-2 gap-4 justify-items-center">
     <div v-for="n in 3" class="card lg:w-96 bg-base-100 card-xl shadow-sm shadow-primary">
       <div class="card-body">
         <h2 class="card-title">Lorem ipsum dolor sit amet</h2>

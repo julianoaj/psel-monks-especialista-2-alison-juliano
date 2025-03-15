@@ -1,5 +1,4 @@
 <?php
-// File: app/Http/Requests/FormRequest.php
 
 namespace App\Http\Requests;
 

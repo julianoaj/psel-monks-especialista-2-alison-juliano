@@ -44,7 +44,7 @@ const pushCategory = (e: string[]) => {
     </div>
 
     <div class="lg:p-20 p-6">
-      <Products class="lg:mt-30 mt-10"/>
+      <Products class="lg:mt-0 mt-10"/>
 
       <Gallery class="lg:mt-20 mt-10 xl:pr-5"/>
 

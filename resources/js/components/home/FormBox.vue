@@ -14,6 +14,7 @@ const emits = defineEmits(['savedCategories'])
 
 const successSubmit = ref(false)
 const errorSubmit = ref(false)
+const formKey = ref(Date.now());
 
 const formCategories = ref<formCategories>({
   category1: '',
@@ -27,6 +28,7 @@ const submitForm = () => {
   axios.post('http://localhost/categories/save', formCategories.value)
     .then(response => {
       successSubmit.value = true
+
       emits('savedCategories', response.data.data)
 
       setTimeout(() => {
@@ -54,12 +56,14 @@ const clearForm = () => {
     category4: '',
     verification: null
   }
+
+  formKey.value = Date.now();
 }
 
 </script>
 
 <template>
-  <div v-bind="$attrs" class="grid xl:grid-cols-12 bg-accent lg:p-20 py-6 lg:gap-10 items-center justify-items-center">
+  <form :key="formKey" v-bind="$attrs" class="grid xl:grid-cols-12 bg-accent lg:p-20 py-6 lg:gap-10 items-center justify-items-center">
     <div class="xl:col-span-4 col-span-12 mt-8 lg:mt-0 mb-10 lg:mb-0">
       <img src="/images/form-box-image.png" alt="computer" class="h-full w-70 lg:w-full">
     </div>
@@ -109,7 +113,7 @@ const clearForm = () => {
         </div>
       </div>
     </div>
-  </div>
+  </form>
   <div class="flex justify-center bg-accent">
     <div class="divider divider-neutral w-300"/>
   </div>
