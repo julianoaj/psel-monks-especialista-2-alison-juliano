@@ -20,7 +20,7 @@
 
 ## Sobre o projeto
 
-Esse projeto foi desenvolvido para um case de um processo seletivo para empresa Monks. Tecnlogias utilizadas no back-end: 
+Esse projeto foi desenvolvido para o case de um processo seletivo para empresa Monks. Tecnlogias utilizadas no back-end: 
 
 - PHP, Docker, Nginx, MySQL, TypeScript e JavaScript.
 
@@ -28,4 +28,42 @@ Para o desenvolvimento front-end foi utilizado:
 
 - Vue.js, Tailwind e daisyUI.
 
+## Requerimentos
 
+- [NodeJS/npm](https://nodejs.org/en/download)
+- [Docker/Docker composer](https://www.docker.com/get-started/)
+
+### Recomendado
+
+- [Composer](https://yarnpkg.com/getting-started/install)
+
+## Inicializando o projeto
+
+1. Clone o repositório
+
+2. Prepare o ambiente para os containers do docker. Abra o terminal e navegue até a pasta do projeto. Rode o comando:
+
+```bash
+docker-compose build
+```
+3. Inicie os contaiers do docker:
+
+```bash
+docker-compose up -d
+```
+
+4. Instale as dependências do projeto:
+
+Npm:
+```bash
+npm install
+```
+Composer (caso tenha instalado):
+```bash
+composer update --no-dev --optimize-autoloader
+```
+ou rode o composer dentro do container do php:
+
+```bash
+docker-compose run --rm php composer update --no-dev --optimize-autoloader
+```

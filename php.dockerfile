@@ -31,6 +31,6 @@ RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini \
     && sed -i '/pdo_mysql/d' /usr/local/etc/php/php.ini
 
 WORKDIR /var/www/projects
-COPY composer.json composer.lock ./
+COPY composer.json ./
 RUN composer update --no-dev --optimize-autoloader
 COPY . .
