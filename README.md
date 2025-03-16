@@ -20,28 +20,33 @@
 
 ## Sobre o projeto
 
-Esse projeto foi desenvolvido para o case de um processo seletivo para empresa Monks. Tecnlogias utilizadas no back-end: 
+Este projeto foi desenvolvido para um case de processo seletivo para a empresa Monks. As tecnologias utilizadas foram: 
 
-- PHP, Docker, Nginx, MySQL, TypeScript e JavaScript.
+- **Back-end:** PHP, Docker, Nginx, MySQL, TypeScript e JavaScript.
 
-Para o desenvolvimento front-end foi utilizado: 
+- **Front-end:** Vue.js, Tailwind e daisyUI.
 
-- Vue.js, Tailwind e daisyUI.
+---
 
-## Requerimentos
+# Requisitos
 
 - [NodeJS/npm](https://nodejs.org/en/download)
-- [Docker/Docker composer](https://www.docker.com/get-started/)
+- [Docker/Docker Compose](https://www.docker.com/get-started)
 
-### Recomendado
+> **Recomendado:**  
+> [Composer](https://yarnpkg.com/getting-started/install)
 
-- [Composer](https://yarnpkg.com/getting-started/install)
+---
 
-## Inicializando o projeto
+# Inicialização do Projeto
 
-1. Clone o repositório
+Siga os passos abaixo para configurar o ambiente:
 
-2. Prepare o ambiente para os containers do docker. Abra o terminal e navegue até a pasta do projeto. Rode o comando:
+1. **Clone o Repositório**  
+   Faça o clone do projeto para sua máquina local.
+
+
+2. **Construa os Containers do Docker**
 
 ```bash
 docker-compose build
@@ -69,17 +74,9 @@ docker-compose run --rm php composer update --no-dev --optimize-autoloader
 ```
 5. Acesse o seu localhost pelo navegador: [http://localhost](http://localhost)
 
-## Arvore de diretórios
+# Observações
 
-📂 MyProject
-├── 📂 app                # Source code
-│   ├── 📂 Facades     # UI Components
-│   ├── 📂 Http          # Helper functions
-│   ├── 📜 index.js       # Main entry file
-│   └── 📜 app.js         # App initialization
-├── 📂 public             # Static assets
-├── 📂 tests              # Unit & integration tests
-├── 📜 package.json       # Dependencies & scripts
-├── 📜 README.md          # Project documentation
-└── 📜 .gitignore         # Ignored files
+- `Volumes Docker`: Se um volume estiver mapeado no seu `docker-compose.yml`, os arquivos gerados durante a build (como o diretório vendor) podem ficar ocultos ou serem sobrescritos pela pasta do host. Verifique a configuração dos volumes se precisar preservar esses arquivos.
 
+
+- `Configuração de Ambiente`: Certifique-se de atualizar os arquivos de configuração para atender aos requisitos específicos do seu ambiente.
