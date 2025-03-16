@@ -22,12 +22,13 @@ class Route extends SymfonyRoute
         return self::$routes;
     }
 
-    protected static function addRoute(string $method, string $uri, $action): void
+    protected static function addRoute(string $method, string $uri, $action, array $options = []): void
     {
         self::init();
+        $defaults = array_merge(['_controller' => $action], $options);
         self::$routes->add($uri, new Route(
             $uri,
-            ['_controller' => $action],
+            $defaults,
             [],
             [],
             '',
@@ -36,23 +37,23 @@ class Route extends SymfonyRoute
         ));
     }
 
-    public static function get(string $uri, $action): void
+    public static function get(string $uri, $action, array $options = []): void
     {
-        self::addRoute('GET', $uri, $action);
+        self::addRoute('GET', $uri, $action, $options);
     }
 
-    public static function post(string $uri, $action): void
+    public static function post(string $uri, $action, array $options = []): void
     {
-        self::addRoute('POST', $uri, $action);
+        self::addRoute('POST', $uri, $action, $options);
     }
 
-    public static function put(string $uri, $action): void
+    public static function put(string $uri, $action, array $options = []): void
     {
-        self::addRoute('PUT', $uri, $action);
+        self::addRoute('PUT', $uri, $action, $options);
     }
 
-    public static function delete(string $uri, $action): void
+    public static function delete(string $uri, $action, array $options = []): void
     {
-        self::addRoute('DELETE', $uri, $action);
+        self::addRoute('DELETE', $uri, $action, $options);
     }
 }

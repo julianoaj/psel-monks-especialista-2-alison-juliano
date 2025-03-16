@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use App\Http\Exceptions\ValidationException;
+use App\Middleware\ThrottleMiddleware;
 
 class Kernel
 {
@@ -23,6 +24,23 @@ class Kernel
 
         try {
             $parameters = $matcher->match($request->getPathInfo());
+
+            // Check for a middleware key and process throttle if needed.
+            if (isset($parameters['middleware'])) {
+                $middlewareOption = $parameters['middleware'];
+                if (strpos($middlewareOption, 'throttle:') === 0) {
+                    [, $params] = explode(':', $middlewareOption, 2);
+                    [$limit, $minutes] = explode(',', $params);
+                    $throttle = new ThrottleMiddleware((int)$limit, (int)$minutes);
+                    // Handle throttle. Execution stops here if limit exceeded.
+                    $throttle->handle($request, function ($request) {
+                        return $request;
+                    });
+                }
+                // Remove middleware key so it does not conflict.
+                unset($parameters['middleware']);
+            }
+
             list($controllerClass, $method) = explode('@', $parameters['_controller']);
 
             $controller = new $controllerClass();
