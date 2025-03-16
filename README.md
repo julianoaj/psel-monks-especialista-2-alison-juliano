@@ -53,13 +53,13 @@ Siga os passos abaixo para configurar o ambiente:
 ```bash
 docker-compose build
 ```
-3. Inicie os containers do docker: (certifique-se de que as portas 80, 3306 e 9000 estão disponíveis)
+3. **Inicie os containers do docker: (certifique-se de que as portas 80, 3306 e 9000 estão disponíveis)**
 
 ```bash
 docker-compose up -d
 ```
 
-4. Instale as dependências do projeto:
+4. **Instale as dependências do projeto:**
 
 Npm:
 ```bash
@@ -75,7 +75,7 @@ ou rode o composer dentro do container do php:
 docker-compose run --rm php composer update --no-dev --optimize-autoloader
 ```
 
-6. Agora precisamos gerar as tabelas necessárias para o projeto. Para isso, precisamos rodar algumas query's SQL. Você pode usar o seu gerenciador de banco de dados preferido ou fazer isso pelo bash do container do mysql. Segue as query's:
+5. **Agora precisamos gerar as tabelas necessárias para o projeto. Para isso, precisamos rodar algumas query's SQL. Você pode usar o seu gerenciador de banco de dados preferido ou fazer isso pelo bash do container do mysql. Segue as query's:**
 
 ```bash
 CREATE TABLE categories (
@@ -84,10 +84,22 @@ CREATE TABLE categories (
 );
 ```
 
-7. Crie seu `.env` baseado no `.env.example`. Por convenção adicionei meu `.env`ao `.gitignore` (pode ser o mesmo conteúdo, por padrão o `docker-compose.yml` ja gera um banco de dados com login e senha).
+voce pode rodar a query acima no seu gerenciador de banco de dados ou pode fazer isso via terminal (não recomendado):
+
+```bash
+docker-compose exec db mysql -u devuser -pdevpass -e "USE test_db; CREATE TABLE categories (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);"
+```
+
+6. **Crie seu `.env` baseado no `.env.example`. Por convenção adicionei meu `.env`ao `.gitignore` (pode ser o mesmo conteúdo, por padrão o `docker-compose.yml` ja gera um banco de dados com login e senha).**
 
 
-8. Acesse o seu localhost pelo navegador: [http://localhost](http://localhost)
+7. **Compile os arquivos do front-end no terminal:**
+
+```bash
+npm run dev
+```
+
+8. **Acesse o seu localhost pelo navegador: [http://localhost](http://localhost)**
 
 # Observações
 

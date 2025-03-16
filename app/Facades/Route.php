@@ -22,7 +22,7 @@ class Route extends SymfonyRoute
         return self::$routes;
     }
 
-    protected static function addRoute(string $method, string $uri, string $action): void
+    protected static function addRoute(string $method, string $uri, $action): void
     {
         self::init();
         self::$routes->add($uri, new Route(
@@ -36,22 +36,22 @@ class Route extends SymfonyRoute
         ));
     }
 
-    public static function get(string $uri, string $action): void
+    public static function get(string $uri, $action): void
     {
         self::addRoute('GET', $uri, $action);
     }
 
-    public static function post(string $uri, string $action): void
+    public static function post(string $uri, $action): void
     {
         self::addRoute('POST', $uri, $action);
     }
 
-    public static function put(string $uri, string $action): void
+    public static function put(string $uri, $action): void
     {
         self::addRoute('PUT', $uri, $action);
     }
 
-    public static function delete(string $uri, string $action): void
+    public static function delete(string $uri, $action): void
     {
         self::addRoute('DELETE', $uri, $action);
     }
