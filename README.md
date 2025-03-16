@@ -46,7 +46,7 @@ Para o desenvolvimento front-end foi utilizado:
 ```bash
 docker-compose build
 ```
-3. Inicie os contaiers do docker:
+3. Inicie os containers do docker: (certifique-se de que as portas 80, 3306 e 9000 estão disponíveis)
 
 ```bash
 docker-compose up -d
@@ -67,3 +67,19 @@ ou rode o composer dentro do container do php:
 ```bash
 docker-compose run --rm php composer update --no-dev --optimize-autoloader
 ```
+5. Acesse o seu localhost pelo navegador: [http://localhost](http://localhost)
+
+## Arvore de diretórios
+
+📂 MyProject
+├── 📂 app                # Source code
+│   ├── 📂 Facades     # UI Components
+│   ├── 📂 Http          # Helper functions
+│   ├── 📜 index.js       # Main entry file
+│   └── 📜 app.js         # App initialization
+├── 📂 public             # Static assets
+├── 📂 tests              # Unit & integration tests
+├── 📜 package.json       # Dependencies & scripts
+├── 📜 README.md          # Project documentation
+└── 📜 .gitignore         # Ignored files
+
