@@ -35,6 +35,8 @@ Este projeto foi desenvolvido para um case de processo seletivo para a empresa M
 
 > **Recomendado:**  
 > [Composer](https://yarnpkg.com/getting-started/install)
+> 
+> Gerenciador de banco de dados (Datagrip, DBeaver, MySQL Workbench, etc)
 
 ---
 
@@ -72,7 +74,20 @@ ou rode o composer dentro do container do php:
 ```bash
 docker-compose run --rm php composer update --no-dev --optimize-autoloader
 ```
-5. Acesse o seu localhost pelo navegador: [http://localhost](http://localhost)
+
+6. Agora precisamos gerar as tabelas necessárias para o projeto. Para isso, precisamos rodar algumas query's SQL. Você pode usar o seu gerenciador de banco de dados preferido ou fazer isso pelo bash do container do mysql. Segue as query's:
+
+```bash
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+```
+
+7. Crie seu `.env` baseado no `.env.example`. Por convenção adicionei meu `.env`ao `.gitignore` (pode ser o mesmo conteúdo, por padrão o `docker-compose.yml` ja gera um banco de dados com login e senha).
+
+
+8. Acesse o seu localhost pelo navegador: [http://localhost](http://localhost)
 
 # Observações
 
